@@ -1,5 +1,6 @@
 ﻿using System.Xml.Linq;
 using AutoMapper;
+using Lab.Domain.DTOs.Requests;
 using Lab.Domain.DTOs.Responses;
 using Lab.Domain.Entities;
 
@@ -9,7 +10,7 @@ public class ReportProfile : Profile
 {
     public ReportProfile()
     {
-        CreateMap<Report, GetReportResponses>()
+        CreateMap<Report, GetReportResponse>()
             .ForMember(
                 dest => dest.ReportNumber,
                 src => src.MapFrom(
@@ -19,6 +20,12 @@ public class ReportProfile : Profile
                     x => $"Diagnosis : {x.PatientDiagnosis}"))
             .ForMember(dest => dest.ReportDate,
                 src => src.MapFrom(
-                    x=> $"Date : {x.ReportDate}"));
+                    x => x.ReportDate.ToString("yyyy-MM-dd HH:mm:ss")));
+
+        CreateMap<CreateReportRequest, Report>()
+            .ForMember(dest => dest.Id,
+                opt => opt.MapFrom(_ => Guid.NewGuid()))
+            .ForMember(dest => dest.ReportDate,
+                opt => opt.MapFrom(_ => DateTime.UtcNow));
     }
 }

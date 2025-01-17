@@ -1,6 +1,6 @@
 ﻿namespace Lab.Domain.DTOs.Responses;
 
-public class GetReportResponses
+public class GetReportResponse
 {
     public int ReportNumber { get; set; }
     public string? PatientName { get; set; }
