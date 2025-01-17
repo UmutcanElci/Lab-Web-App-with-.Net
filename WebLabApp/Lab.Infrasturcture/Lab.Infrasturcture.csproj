@@ -10,4 +10,8 @@
       <Folder Include="Data\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Lab.Domain\Lab.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

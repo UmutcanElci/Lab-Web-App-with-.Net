@@ -1,8 +1,7 @@
-﻿namespace Lab.Domain.Entities;
+﻿namespace Lab.Domain.DTOs.Responses;
 
-public class Report
+public class GetReportResponses
 {
-    public Guid Id { get; set; }
     public int ReportNumber { get; set; }
     public string? PatientName { get; set; }
     public string? PatientSurname { get; set; }
