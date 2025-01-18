@@ -1,0 +1,16 @@
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\bin\Debug\net8.0\Lab.App.deps.json
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\bin\Debug\net8.0\Lab.App.dll
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\bin\Debug\net8.0\Lab.App.pdb
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\bin\Debug\net8.0\Lab.Domain.dll
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\bin\Debug\net8.0\Lab.Domain.pdb
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.csproj.AssemblyReference.cache
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.AssemblyInfoInputs.cache
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.AssemblyInfo.cs
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.csproj.CoreCompileInputs.cache
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.sourcelink.json
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.csproj.Up2Date
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.dll
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\refint\Lab.App.dll
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.pdb
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\ref\Lab.App.dll

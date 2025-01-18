@@ -1,0 +1,12 @@
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\bin\Debug\net8.0\Lab.Domain.deps.json
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\bin\Debug\net8.0\Lab.Domain.dll
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\bin\Debug\net8.0\Lab.Domain.pdb
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\obj\Debug\net8.0\Lab.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\obj\Debug\net8.0\Lab.Domain.AssemblyInfoInputs.cache
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\obj\Debug\net8.0\Lab.Domain.AssemblyInfo.cs
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\obj\Debug\net8.0\Lab.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\obj\Debug\net8.0\Lab.Domain.sourcelink.json
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\obj\Debug\net8.0\Lab.Domain.dll
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\obj\Debug\net8.0\refint\Lab.Domain.dll
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\obj\Debug\net8.0\Lab.Domain.pdb
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.Domain\obj\Debug\net8.0\ref\Lab.Domain.dll

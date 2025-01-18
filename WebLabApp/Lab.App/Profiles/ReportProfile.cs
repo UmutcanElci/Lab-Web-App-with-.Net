@@ -10,11 +10,9 @@ public class ReportProfile : Profile
 {
     public ReportProfile()
     {
+        var rand = new Random();
+        
         CreateMap<Report, GetReportResponse>()
-            .ForMember(
-                dest => dest.ReportNumber,
-                src => src.MapFrom(
-                    x => $"Report Number : {x.ReportNumber} Name : {x.PatientName} Surname : {x.PatientSurname}"))
             .ForMember(dest => dest.PatientDiagnosis,
                 src => src.MapFrom(
                     x => $"Diagnosis : {x.PatientDiagnosis}"))
@@ -26,6 +24,8 @@ public class ReportProfile : Profile
             .ForMember(dest => dest.Id,
                 opt => opt.MapFrom(_ => Guid.NewGuid()))
             .ForMember(dest => dest.ReportDate,
-                opt => opt.MapFrom(_ => DateTime.UtcNow));
+                opt => opt.MapFrom(_ => DateTime.UtcNow))
+            .ForMember(dest => dest.ReportNumber,
+                opt => opt.MapFrom(_ => rand.Next(1000000, 9999999)));
     }
 }
