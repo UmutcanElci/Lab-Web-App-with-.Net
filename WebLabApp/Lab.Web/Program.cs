@@ -1,5 +1,9 @@
 using Lab.App.Interfaces;
 using Lab.App.Services;
+using Lab.Infrasturcture.Data;
+using Lab.Infrasturcture.Repositories.Implementations;
+using Lab.Infrasturcture.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +12,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IReportService, ReportService>(); 
+
+builder.Services.AddDbContext<LabAppDbContext>(opt =>
+    opt.UseMySQL(
+        builder.Configuration.GetConnectionString("DefaultConnection")!));
+
+builder.Services.AddScoped<IReportRepository, ReportRepository>();
+builder.Services.AddScoped<IReportService, ReportService>(); 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

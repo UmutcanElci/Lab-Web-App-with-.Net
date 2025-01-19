@@ -3,27 +3,29 @@ using Lab.App.Interfaces;
 using Lab.Domain.DTOs.Requests;
 using Lab.Domain.DTOs.Responses;
 using Lab.Domain.Entities;
+using Lab.Infrasturcture.Repositories.Interfaces;
 
 namespace Lab.App.Services;
 
 public class ReportService : IReportService
 {
     private readonly IMapper _mapper;
-    private readonly List<Report> _reports = new();
+    private readonly IReportRepository _repository;
 
-    public ReportService(IMapper mapper)
+    public ReportService(IMapper mapper, IReportRepository repository)
     {
         _mapper = mapper;
+        _repository = repository;
     }
-    public Task<Guid> Create(CreateReportRequest reportRequest)
+    public async Task<Guid> Create(CreateReportRequest reportRequest)
     {
         
         var report = _mapper.Map<Report>(reportRequest);
 
-      
-        _reports.Add(report);
-        
-        return Task.FromResult(report.Id);
+
+        var result = await _repository.CreateAsync(report);
+
+        return result.Id;
     }
 
     public Task Update(Guid Id, CreateReportRequest updateRequest)
@@ -41,9 +43,10 @@ public class ReportService : IReportService
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<GetReportResponse>> GetAllReports()
+    public async Task<IEnumerable<GetReportResponse>> GetAllReports()
     {
-        var reportResponses = _mapper.Map<IEnumerable<GetReportResponse>>(_reports);
-        return Task.FromResult(reportResponses);
+        var report = await _repository.GetAllAsync();
+        var reportResponses = _mapper.Map<IEnumerable<GetReportResponse>>(report);
+        return reportResponses.ToList();
     }
 }

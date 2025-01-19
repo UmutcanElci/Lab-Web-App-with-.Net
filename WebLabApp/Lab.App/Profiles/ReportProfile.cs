@@ -14,10 +14,10 @@ public class ReportProfile : Profile
         
         CreateMap<Report, GetReportResponse>()
             .ForMember(dest => dest.PatientDiagnosis,
-                src => src.MapFrom(
+                opt => opt.MapFrom(
                     x => $"Diagnosis : {x.PatientDiagnosis}"))
             .ForMember(dest => dest.ReportDate,
-                src => src.MapFrom(
+                opt => opt.MapFrom(
                     x => x.ReportDate.ToString("yyyy-MM-dd HH:mm:ss")));
 
         CreateMap<CreateReportRequest, Report>()
@@ -26,6 +26,8 @@ public class ReportProfile : Profile
             .ForMember(dest => dest.ReportDate,
                 opt => opt.MapFrom(_ => DateTime.UtcNow))
             .ForMember(dest => dest.ReportNumber,
-                opt => opt.MapFrom(_ => rand.Next(1000000, 9999999)));
+                opt => opt.MapFrom(_ => rand.Next(1000000, 9999999)))
+            .ForMember(dest => dest.PatientPhoneNumber,
+                opt => opt.MapFrom(src => src.PatientPhoneNumber));
     }
 }

@@ -14,3 +14,5 @@ C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.dl
 C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\refint\Lab.App.dll
 C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\Lab.App.pdb
 C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\obj\Debug\net8.0\ref\Lab.App.dll
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\bin\Debug\net8.0\Lab.Infrasturcture.dll
+C:\Users\Malat\Desktop\Code\LabApp\WebLabApp\Lab.App\bin\Debug\net8.0\Lab.Infrasturcture.pdb
