@@ -14,15 +14,21 @@ public class DoctorRepository : IDoctorRepository
         _context = context;
     }
 
-    public async Task<Doctor> GetEmailAsync(string email)
+    public async Task<Doctor> GetEmailAsync(string? email)
     {
         return await _context.Doctors.FirstOrDefaultAsync(d => d.Email == email);
     }
 
-    public async Task AddAsync(Doctor doctor)
+    public async Task<Doctor> AddAsync(Doctor doctor)
     {
         await _context.Doctors.AddAsync(doctor);
         await _context.SaveChangesAsync();
+        return doctor;
+    }
+
+    public Task<Doctor> GetByIdAsync(Doctor doctor)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task<Doctor?> GetByIdAsync(Guid Id)

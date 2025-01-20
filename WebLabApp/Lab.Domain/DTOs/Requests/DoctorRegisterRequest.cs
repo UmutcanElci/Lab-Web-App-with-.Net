@@ -7,16 +7,16 @@ public class DoctorRegisterRequest
     [Required]
     [EmailAddress]
     [RegularExpression(@"^[a-zA-Z0-9._%+-]+@doctor\.com$", ErrorMessage = "Email must end with '@doctor.com'")]
-    public string Email { get; set; }
+    public string? Email { get; set; }
 
     [Required]
-    public string Password { get; set; }
+    public string? Password { get; set; }
 
     [Required]
-    public string DoctorName { get; set; }
+    public string? DoctorName { get; set; }
 
     [Required]
-    public string DoctorSurname { get; set; }
+    public string? DoctorSurname { get; set; }
 
     public string? Specialization { get; set; }
 }

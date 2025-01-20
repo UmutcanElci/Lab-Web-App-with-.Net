@@ -4,6 +4,7 @@ using Lab.Domain.DTOs.Requests;
 using Lab.Domain.DTOs.Responses;
 using Lab.Domain.Entities;
 using Lab.Infrasturcture.Repositories.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace Lab.App.Services;
 
@@ -11,16 +12,16 @@ public class DoctorService : IDoctorService
 {
     private readonly IMapper _mapper;
     private readonly IDoctorRepository _repository;
-    private readonly IPasswordHasher _passwordHasher;
+    private readonly IPasswordHasher<Doctor> _passwordHasher;
 
-    public DoctorService(IMapper mapper, IDoctorRepository repository, IPasswordHasher passwordHasher)
+    public DoctorService(IMapper mapper, IDoctorRepository repository, IPasswordHasher<Doctor> passwordHasher)
     {
         _mapper = mapper;
         _repository = repository;
         _passwordHasher = passwordHasher;
     }
 
-    public async Task<Guid> RegisterDoctor(DoctorRegisterRequest request)
+    public async Task<Doctor> RegisterDoctorAsync(DoctorRegisterRequest request)
     {
         if (!request.Email.EndsWith("@doctor.com"))
         {
@@ -30,29 +31,34 @@ public class DoctorService : IDoctorService
         var existingDoctor = await _repository.GetEmailAsync(request.Email);
         if (existingDoctor != null)
         {
-            throw new Exception("Doctor with this email already exists");
+            throw new Exception("A doctor with this email already exists.");
         }
 
         // Map request to Doctor entity
         var doctor = _mapper.Map<Doctor>(request);
         doctor.Id = Guid.NewGuid();
-        doctor.Password = _passwordHasher.HashPassword(request.Password);
+        doctor.Password = _passwordHasher.HashPassword(doctor, request.Password);
 
+        // Add doctor to repository
         var result = await _repository.AddAsync(doctor);
-
-        return doctor.Id;
+        return result;
     }
 
-    public async Task<GetDoctorResponse.DoctorResponse> GetDoctorById(Guid id)
+    public async Task<DoctorLoginRequest?> AuthenticateDoctorAsync(string? email, string password)
     {
-        var doctor = await _repository.GetByIdAsync(id);
+        var doctor = await _repository.GetEmailAsync(email);
         if (doctor == null)
         {
-            throw new Exception("Doctor not found");
+            throw new Exception("Doctor not found.");
         }
 
-        // Map entity to response
-        var response = _mapper.Map<GetDoctorResponse.DoctorResponse>(doctor);
-        return response;
+        var passwordVerificationResult = _passwordHasher.VerifyHashedPassword(doctor, doctor.Password, password);
+        if (passwordVerificationResult == PasswordVerificationResult.Failed)
+        {
+            throw new Exception("Invalid credentials.");
+        }
+
+        // Map to response object
+        return _mapper.Map<DoctorLoginRequest>(doctor);
     }
 }

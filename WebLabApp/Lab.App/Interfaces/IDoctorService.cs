@@ -5,7 +5,7 @@ namespace Lab.App.Interfaces;
 
 public interface IDoctorService
 {
-    Task RegisterDoctorAsync(DoctorRegisterRequest request);
-    Task<Doctor?> AuthenticateDoctorAsync(string email, string password);
+    Task<Doctor> RegisterDoctorAsync(DoctorRegisterRequest request);
+    Task<DoctorLoginRequest?> AuthenticateDoctorAsync(string? email, string password);
     
 }
