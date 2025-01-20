@@ -9,6 +9,6 @@ public interface IReportService
     Task<Guid> Create(CreateReportRequest reportRequest);
     Task Update(Guid Id, CreateReportRequest updateRequest);
     Task<bool> Delete(Guid Id);
-    Task GetById(Guid Id);
+    Task<Report> GetById(Guid Id);
     Task<IEnumerable<GetReportResponse>> GetAllReports();
 }

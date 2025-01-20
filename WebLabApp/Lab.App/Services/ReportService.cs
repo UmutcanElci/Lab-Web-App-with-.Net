@@ -20,27 +20,34 @@ public class ReportService : IReportService
     public async Task<Guid> Create(CreateReportRequest reportRequest)
     {
         
-        var report = _mapper.Map<Report>(reportRequest);
+        var report = _mapper.Map<Report>(reportRequest); // Used <Report> because creating fresh Report object
 
+        // Generate a unique ReportNumber
+        report.ReportNumber = await GenerateUniqueReportNumberAsync();
 
         var result = await _repository.CreateAsync(report);
-
         return result.Id;
     }
 
-    public Task Update(Guid Id, CreateReportRequest updateRequest)
+    public async Task Update(Guid Id, CreateReportRequest updateRequest)
     {
-        throw new NotImplementedException();
+        var report = await _repository.GetByIdAsync(Id);
+        _mapper.Map(updateRequest, report);
+
+        await _repository.UpdateAsync(report);
     }
 
-    public Task<bool> Delete(Guid Id)
+    public async Task<bool> Delete(Guid Id)
     {
-        throw new NotImplementedException();
+        var deleted = await _repository.DeleteAsync(Id);
+        return deleted;
     }
 
-    public Task GetById(Guid Id)
+    public async Task<Report> GetById(Guid Id)
     {
-        throw new NotImplementedException();
+        var report = await _repository.GetByIdAsync(Id);
+        
+        return report;
     }
 
     public async Task<IEnumerable<GetReportResponse>> GetAllReports()
@@ -49,4 +56,18 @@ public class ReportService : IReportService
         var reportResponses = _mapper.Map<IEnumerable<GetReportResponse>>(report);
         return reportResponses.ToList();
     }
+    private async Task<int> GenerateUniqueReportNumberAsync()
+    {
+        int reportNumber;
+        var rand = new Random();
+
+        do
+        {
+            reportNumber = rand.Next(1000000, 9999999);
+        }
+        while (await _repository.ReportNumberExistsAsync(reportNumber));
+
+        return reportNumber;
+    }
+
 }

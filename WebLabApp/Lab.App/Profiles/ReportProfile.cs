@@ -18,16 +18,19 @@ public class ReportProfile : Profile
                     x => $"Diagnosis : {x.PatientDiagnosis}"))
             .ForMember(dest => dest.ReportDate,
                 opt => opt.MapFrom(
-                    x => x.ReportDate.ToString("yyyy-MM-dd HH:mm:ss")));
+                    x => x.ReportDate.ToString("yyyy-MM-dd")));
 
         CreateMap<CreateReportRequest, Report>()
             .ForMember(dest => dest.Id,
                 opt => opt.MapFrom(_ => Guid.NewGuid()))
             .ForMember(dest => dest.ReportDate,
-                opt => opt.MapFrom(_ => DateTime.UtcNow))
-            .ForMember(dest => dest.ReportNumber,
-                opt => opt.MapFrom(_ => rand.Next(1000000, 9999999)))
+                opt => opt.MapFrom(_ => DateTime.Now))
             .ForMember(dest => dest.PatientPhoneNumber,
                 opt => opt.MapFrom(src => src.PatientPhoneNumber));
+        
+        CreateMap<UpdateReportRequest, Report>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore()) // Id should not be updated
+            .ForMember(dest => dest.ReportDate, opt => opt.Ignore()); 
+
     }
 }

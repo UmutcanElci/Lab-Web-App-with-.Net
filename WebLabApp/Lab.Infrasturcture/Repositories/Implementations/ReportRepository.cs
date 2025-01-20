@@ -45,4 +45,10 @@ public class ReportRepository : IReportRepository
     {
         return await _context.Reports.ToListAsync();
     }
+
+    public async Task<bool> ReportNumberExistsAsync(int reportNumber)
+    {
+        return await _context.Reports.AnyAsync(r => r.ReportNumber == reportNumber);
+    }
+
 }

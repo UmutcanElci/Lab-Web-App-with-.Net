@@ -15,7 +15,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<LabAppDbContext>(opt =>
     opt.UseMySQL(
-        builder.Configuration.GetConnectionString("DefaultConnection")!));
+        builder.Configuration.GetConnectionString("DefaultConnection")!)
+    .EnableSensitiveDataLogging()
+    .LogTo(Console.WriteLine));
 
 builder.Services.AddScoped<IReportRepository, ReportRepository>();
 builder.Services.AddScoped<IReportService, ReportService>(); 

@@ -9,4 +9,6 @@ public interface IReportRepository
     Task<bool> DeleteAsync(Guid id);
     Task<Report> GetByIdAsync(Guid id);
     Task<IEnumerable<Report>> GetAllAsync();
+    Task<bool> ReportNumberExistsAsync(int reportNumber);
+
 }
